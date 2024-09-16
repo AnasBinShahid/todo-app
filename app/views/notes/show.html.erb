@@ -1,0 +1,26 @@
+<div class='notes-container'>
+  <% if flash[:success] %>
+    <% flash.each do |name, message| %>
+      <p class='alert alert-success'><%= message %></p>
+    <% end %>
+  <% end %>
+  <div class='card'>
+    <div class='card-body'>
+      <div class='card-title'><%= @note.title %></div>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Expected completion on <%= format_date(@note.expected_completion_at, true) %></h6>
+      <% if has_description?(@note.description) %>
+        <p class="card-text"><%= @note.description %></p>
+      <% end %>
+      <div class="btn-group">
+        <button type="button" class="btn btn-<%= status_button_class(@note.status)%>"><%= format_status(@note.status) %></button>
+        <button type="button" class="btn btn-<%= status_button_class(@note.status)%> dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'In Progress', note_path(@note), html: {method: :put}, class: "dropdown-item" %></li>
+          <li><a class="dropdown-item" href="#">Completed</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

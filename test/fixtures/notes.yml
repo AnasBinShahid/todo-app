@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  status: 
+  expected_completion_at: 2024-09-09 17:52:15
+  actual_completion_at: 2024-09-09 17:52:15
+
+two:
+  title: MyString
+  description: MyText
+  status: 
+  expected_completion_at: 2024-09-09 17:52:15
+  actual_completion_at: 2024-09-09 17:52:15

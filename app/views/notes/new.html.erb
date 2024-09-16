@@ -1,0 +1,18 @@
+<div class='notes-form-container'>
+  <% if flash[:errors] %>
+    <% flash.each do |name, message| %>
+      <p class='alert alert-danger'><%= message %></p>
+    <% end %>
+  <% end %>
+  <%= form_with model: @note, class: 'notes-form' do |form| %>
+    <%= form.label 'Title*' %>
+    <%= form.text_field :title, required: true, class: 'notes-form--field' %>
+    <%= form.label 'Description' %>
+    <%= form.text_area :description, class: 'notes-form--field' %>
+    <%= form.label 'Expected Completion At' %>
+    <div class='date-select notes-form--field'>
+      <%= form.date_select :expected_completion_at %>
+    </div>
+    <%= form.submit %>
+  <% end %>
+</div>

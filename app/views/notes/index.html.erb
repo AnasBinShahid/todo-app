@@ -1,0 +1,25 @@
+<div class='notes-container'>
+  <% if flash[:success] %>
+    <% flash.each do |name, message| %>
+      <p class='alert alert-success'><%= message %></p>
+    <% end %>
+  <% end %>
+  <% if @notes.present? %>
+    <% @notes.each do |note| %>
+      <div class='card'>
+        <div class='card-body'>
+          <div class='card-title'><%= note.title %></div>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Expected completion on <%= format_date(note.expected_completion_at, true) %></h6>
+          <% if has_description?(note.description) %>
+            <p class="card-text"><%= note.description %></p>
+          <% end %>
+          <%= render partial: 'note_status', locals: { note: note } %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'New Note', new_note_path, class: "btn btn-light btn__new-note" %>
+  <% else %>
+    <p class='alert alert-success'>No Notes Found</p>
+    <p>Please <a href=<%= new_note_path %>>click here</a> to create one</p>
+  <% end %>
+</div>
