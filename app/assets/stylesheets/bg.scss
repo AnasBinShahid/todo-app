@@ -1,0 +1,11 @@
+@import "../stylesheets/variables.scss";
+
+.bg {
+  &--ghost-white {
+    background-color: $color-ghost-white;
+  }
+
+  &--ghost-white-important {
+    background-color: $color-ghost-white !important;
+  }
+}

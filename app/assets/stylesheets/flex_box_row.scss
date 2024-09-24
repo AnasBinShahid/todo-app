@@ -1,0 +1,8 @@
+.flex-box-row {
+  display: flex;
+  flex-direction: row;
+
+  &__justify-content--space-between {
+    justify-content: space-between;
+  }
+}

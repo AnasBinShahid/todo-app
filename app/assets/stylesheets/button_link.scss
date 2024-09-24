@@ -1,0 +1,26 @@
+.button-link {
+  color: #5856d6;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+
+  &--hover {
+    &:hover {
+      background: #FFFFFF;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      color: #1e293b
+    }
+  }
+
+  &--small {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
