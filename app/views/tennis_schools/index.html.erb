@@ -1,10 +1,10 @@
-<div class='tennis-schools-list-container full-viewport-width full-viewport-height'>
+<div class='tennis-schools-list-container full-viewport-width full-viewport-height' data-controller="tennis-schools">
   <div class='card padding--20 border-0 border-radius--10 padding--10'>
     <div class='card-header p-0 flex-box-row flex-box-row__justify-content--space-between border-0 bg-transparent'>
       <a href='#' class='button button--hover button--active'>New Tennis School</a>
       <div class='flex lg-end'>
         <label for="show-inactive-club" class='label'>Show inactive clubs</label>
-        <input type="checkbox" class='form-check-reverse' id='show-inactive-club'>
+        <input type="checkbox" class='form-check-reverse' id='show-inactive-club' data-action="change->tennis-schools#showInactiveClubs">
       </div>
     </div>
     <div class='card-body px-0 py-4'>
@@ -97,7 +97,7 @@
                 </div>
               </td>
             </tr>
-            <tr class='table-content-inactive'>
+            <tr class='table-content-inactive d-none' data-tennis-schools-target="hideable">
               <td class='align-middle' colspan='1'></td>
               <td class='align-middle' colspan='4'>
                 <span class='table-text table-content-inactive'>ATC Outside</span>

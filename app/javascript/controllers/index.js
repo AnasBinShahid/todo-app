@@ -1,6 +1,6 @@
 // Import and register all your controllers from the importmap via controllers/**/*_controller
 import { application } from "./application"
 
-import HellloController from "./hello_controller";
+import TennisSchoolsController from "./tennis_schools_controller";
 
-application.register("hello", HellloController);
+application.register("tennis-schools", TennisSchoolsController);
