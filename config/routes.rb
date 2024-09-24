@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :notes
   resources :tennis_schools
+  scope '/tennis_schools/:tennis_school_id' do
+    resources :clubs
+  end
 
   root to: 'notes#index'
 end

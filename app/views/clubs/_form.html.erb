@@ -1,0 +1,39 @@
+<%= form_with(model: club) do |form| %>
+  <% if club.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
+      <ul>
+        <% club.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :advance_payment_percentage, style: "display: block" %>
+    <%= form.text_field :advance_payment_percentage %>
+  </div>
+  <div>
+    <%= form.label :min_advance_amount, style: "display: block" %>
+    <%= form.text_field :min_advance_amount %>
+  </div>
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+  <div>
+    <%= form.label :information, style: "display: block" %>
+    <%= form.text_area :information %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
