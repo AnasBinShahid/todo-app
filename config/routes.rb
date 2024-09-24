@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  
+
   resources :notes
+  resources :tennis_schools
 
   root to: 'notes#index'
 end
