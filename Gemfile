@@ -10,8 +10,6 @@ gem "sprockets-rails"
 
 gem 'sassc-rails'
 
-gem 'jquery-rails'
-
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
 
