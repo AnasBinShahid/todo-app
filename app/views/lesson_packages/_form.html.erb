@@ -1,0 +1,71 @@
+<%= form_with(model: lesson_package) do |form| %>
+  <% if lesson_package.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(lesson_package.errors.count, "error") %> prohibited this lesson_package from being saved:</h2>
+      <ul>
+        <% lesson_package.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :start_date, style: "display: block" %>
+    <%= form.date_field :start_date %>
+  </div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :costs, style: "display: block" %>
+    <%= form.text_field :costs %>
+  </div>
+  <div>
+    <%= form.label :open_for_registration, style: "display: block" %>
+    <%= form.check_box :open_for_registration %>
+  </div>
+  <div>
+    <%= form.label :register_by, style: "display: block" %>
+    <%= form.date_field :register_by %>
+  </div>
+  <div>
+    <%= form.label :register_up_to_and_including, style: "display: block" %>
+    <%= form.date_field :register_up_to_and_including %>
+  </div>
+  <div>
+    <%= form.label :number_of_teaching_weeks, style: "display: block" %>
+    <%= form.number_field :number_of_teaching_weeks %>
+  </div>
+  <div>
+    <%= form.label :number_of_minutes_per_lesson, style: "display: block" %>
+    <%= form.number_field :number_of_minutes_per_lesson %>
+  </div>
+  <div>
+    <%= form.label :lessons_per_week, style: "display: block" %>
+    <%= form.number_field :lessons_per_week %>
+  </div>
+  <div>
+    <%= form.label :max_number_of_players, style: "display: block" %>
+    <%= form.text_field :max_number_of_players %>
+  </div>
+  <div>
+    <%= form.label :min_number_of_players, style: "display: block" %>
+    <%= form.text_field :min_number_of_players %>
+  </div>
+  <div>
+    <%= form.label :optimal_number_of_players, style: "display: block" %>
+    <%= form.text_field :optimal_number_of_players %>
+  </div>
+  <div>
+    <%= form.label :max_number_of_impediments, style: "display: block" %>
+    <%= form.text_field :max_number_of_impediments %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

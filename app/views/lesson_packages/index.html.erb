@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+<h1>Lesson packages</h1>
+<div id="lesson_packages">
+  <% @lesson_packages.each do |lesson_package| %>
+    <%= render lesson_package %>
+    <p>
+      <%= link_to "Show this lesson package", lesson_package_path(uuid: params[:uuid], id: lesson_package.id) %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New lesson package", new_lesson_package_path %>

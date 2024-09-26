@@ -1,4 +1,5 @@
 class Club < ApplicationRecord
+  has_many :lesson_packages, dependent: :destroy
   belongs_to :tennis_school
 
   validates :uuid, :name, presence: true

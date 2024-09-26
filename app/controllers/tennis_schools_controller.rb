@@ -1,5 +1,5 @@
 class TennisSchoolsController < ApplicationController
   def index
-    @tennis_schools = []
+    @tennis_schools = TennisSchool.all
   end
 end

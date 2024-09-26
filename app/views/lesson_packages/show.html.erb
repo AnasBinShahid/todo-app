@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lesson_package %>
+
+<div>
+  <%= link_to "Edit this lesson package", edit_lesson_package_path(@lesson_package) %> |
+  <%= link_to "Back to lesson packages", lesson_packages_path %>
+
+  <%= button_to "Destroy this lesson package", @lesson_package, method: :delete %>
+</div>

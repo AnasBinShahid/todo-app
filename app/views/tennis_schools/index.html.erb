@@ -8,163 +8,111 @@
       </div>
     </div>
     <div class='card-body px-0 py-4'>
-      <div class='tennis-schools-table'>
-        <table class='table table-condensed'>
-          <thead class='align-middle table-light'>
-            <tr>
-              <th class='' colspan='1'>
-                <img class='logo' src="https://houseoftennis.nl/wp-content/uploads/2023/09/house-of-tennis-logo-rev1-blue.svg" alt="logo">
-              </th>
-              <th class='table-text' colspan='4'>House of Tennis</th>
-              <th class='' colspan='2'></th>
-              <th class='' colspan='1'></th>
-              <th class='' colspan='1'></th>
-              <th class='text-end' colspan='1'>
-                <div class="btn-group">
-                  <button type="button" class="button button--hover button--active fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-lg-end custom-dropdown-menu">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-pen-to-square me-2"></i>Edit
+      <% @tennis_schools.each do |tennis_school| %>
+        <div class='tennis-schools-table'>
+          <table class='table table-condensed'>
+            <thead class='align-middle table-light'>
+              <tr>
+                <th class='' colspan='1'>
+                  <img class='logo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_DsmUfX_ESxRUAXcY1w81EnM1yj_ab1yySg&s" alt="logo">
+                </th>
+                <th class='table-text' colspan='4'><%= tennis_school.name %></th>
+                <th class='' colspan='2'></th>
+                <th class='' colspan='1'></th>
+                <th class='' colspan='1'></th>
+                <th class='text-end' colspan='1'>
+                  <div class="btn-group">
+                    <button type="button" class="button button--hover button--active fs-6" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end custom-dropdown-menu">
+                      <a class='dropdown-item custom-dropdown-menu__item'>
+                        <i class="fa-solid fa-pen-to-square me-2"></i>Edit
+                      </a>
+                      <hr class="dropdown-divider">
+                      <a class='dropdown-item custom-dropdown-menu__item'>
+                        <i class="fa-solid fa-calendar-days me-2"></i>Plan
+                      </a>
+                      <a class='dropdown-item custom-dropdown-menu__item'>
+                        <i class="fa-solid fa-download me-2"></i>Download trainers list
+                      </a>
+                    </ul>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tennis_school.clubs.each do |club| %>
+                <tr class="<%= !club.active? ? 'table-content-inactive d-none' : '' %>" data-tennis-schools-target="<%= !club.active? ? 'hideable' : '' %>">
+                  <td class='align-middle' colspan='1'></td>
+                  <td class='align-middle' colspan='4'>
+                    <span class="table-text <%= !club.active? && 'table-content-inactive' %>"><%= club.name %></span>
+                    <span class="status-badge status-badge--<%= club_status_text(club).downcase %> margin--left-7"><%= club_status_text(club) %></span>
+                  </td>
+                  <td class='align-middle' colspan='2'>
+                    <span class="table-text <%= !club.active? && 'table-content-inactive' %>"><%= lesson_packages_count_text(club) %></span>
+                    <a href="#" class="button-link button-link--small button-link--hover <%= !club.active? && 'table-content-inactive' %>">
+                      <i class="fa-solid fa-arrow-right <%= !club.active? && 'table-content-inactive' %>"></i>
                     </a>
-                    <hr class="dropdown-divider">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-calendar-days me-2"></i>Plan
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-download me-2"></i>Download trainers list
-                    </a>
-                  </ul>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle' colspan='4'>
-                <span class='table-text'>TC Matchpoint</span>
-                <span class='status-badge status-badge--active margin--left-7'>Active</span>
-              </td>
-              <td class='align-middle' colspan='2'>
-                <span class='table-text'>9 Lesson packages</span>
-                <a href="#" class='button-link button-link--small button-link--hover '>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </td>
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle text-end' colspan='1'>
-                <div class="btn-group">
-                  <button type="button" class="button button--hover button--active fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-lg-end custom-dropdown-menu">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-pen-to-square me-2"></i>Edit
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-user-plus me-2"></i>Registrations
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-calendar-days me-2"></i>Layout
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-briefcase me-2"></i>Lesson packages
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-file-invoice me-2"></i>Invoices
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-mountain-sun me-2"></i>Holidays
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-money-bill-transfer me-2"></i>Cashboxes
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-credit-card me-2"></i>Payment Methods
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-gavel me-2"></i>Terms and Conditions
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a class='dropdown-item custom-dropdown-menu__item custom-dropdown-menu__item--danger'>
-                      <i class="fa-solid fa-trash me-2"></i>Delete
-                    </a>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr class='table-content-inactive d-none' data-tennis-schools-target="hideable">
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle' colspan='4'>
-                <span class='table-text table-content-inactive'>ATC Outside</span>
-                <span class='status-badge status-badge--inactive margin--left-7'>Inactive</span>
-              </td>
-              <td class='align-middle' colspan='2'>
-                <span class='table-text table-content-inactive'>9 Lesson packages</span>
-                <a href="#" class='button-link button-link--small table-content-inactive'>
-                  <i class="fa-solid fa-arrow-right table-content-inactive"></i>
-                </a>
-              </td>
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle' colspan='1'></td>
-              <td class='align-middle text-end table-content-inactive' colspan='1'>
-                <div class="btn-group">
-                  <button type="button" class="button button--hover button--active fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-lg-end custom-dropdown-menu">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-pen-to-square me-2"></i>Edit
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-user-plus me-2"></i>Registrations
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-calendar-days me-2"></i>Layout
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-briefcase me-2"></i>Lesson packages
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-file-invoice me-2"></i>Invoices
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-mountain-sun me-2"></i>Holidays
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-money-bill-transfer me-2"></i>Cashboxes
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-credit-card me-2"></i>Payment Methods
-                    </a>
-                    <a class='dropdown-item custom-dropdown-menu__item'>
-                      <i class="fa-solid fa-gavel me-2"></i>Terms and Conditions
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a class='dropdown-item custom-dropdown-menu__item custom-dropdown-menu__item--danger'>
-                      <i class="fa-solid fa-trash me-2"></i>Delete
-                    </a>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot class='border-bottom-0'>
-            <tr class='border-bottom-0'>
-              <td colspan='10' class='border-bottom-0'>
-                <a href="#" class='d-inline-block button-link button-link--hover'>
-                  <i class="fa-solid fa-plus margin--right-10"></i>New association
-                </a>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+                  </td>
+                  <td class='align-middle' colspan='1'></td>
+                  <td class='align-middle' colspan='1'></td>
+                  <td class="align-middle text-end <%= !club.active? && 'table-content-inactive' %>" colspan='1'>
+                    <div class="btn-group">
+                      <button type="button" class="button button--hover button--active fs-6" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-lg-end custom-dropdown-menu">
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-pen-to-square me-2"></i>Edit
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-user-plus me-2"></i>Registrations
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-calendar-days me-2"></i>Layout
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-briefcase me-2"></i>Lesson packages
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-file-invoice me-2"></i>Invoices
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-mountain-sun me-2"></i>Holidays
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-money-bill-transfer me-2"></i>Cashboxes
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-credit-card me-2"></i>Payment Methods
+                        </a>
+                        <a class='dropdown-item custom-dropdown-menu__item'>
+                          <i class="fa-solid fa-gavel me-2"></i>Terms and Conditions
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a class='dropdown-item custom-dropdown-menu__item custom-dropdown-menu__item--danger'>
+                          <i class="fa-solid fa-trash me-2"></i>Delete
+                        </a>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+            <tfoot class='border-bottom-0'>
+              <tr class='border-bottom-0'>
+                <td colspan='10' class='border-bottom-0'>
+                  <a href="#" class='d-inline-block button-link button-link--hover'>
+                    <i class="fa-solid fa-plus margin--right-10"></i>New association
+                  </a>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

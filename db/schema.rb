@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_24_115039) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_24_121203) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -53,6 +53,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_115039) do
     t.index ["tennis_school_id"], name: "index_clubs_on_tennis_school_id"
   end
 
+  create_table "lesson_packages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "club_id", null: false
+    t.string "name", null: false
+    t.date "start_date"
+    t.text "description", null: false
+    t.decimal "costs", precision: 10
+    t.boolean "open_for_registration", default: true
+    t.date "register_by"
+    t.date "register_up_to_and_including"
+    t.integer "number_of_teaching_weeks", null: false
+    t.integer "number_of_minutes_per_lesson", null: false
+    t.integer "lessons_per_week"
+    t.bigint "max_number_of_players"
+    t.bigint "min_number_of_players"
+    t.bigint "optimal_number_of_players"
+    t.bigint "max_number_of_impediments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_lesson_packages_on_club_id"
+  end
+
   create_table "notes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -77,4 +98,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_115039) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clubs", "tennis_schools"
+  add_foreign_key "lesson_packages", "clubs"
 end

@@ -3,7 +3,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs or /clubs.json
   def index
-    @clubs = Club.all
+    @clubs = tennis_school.clubs.all
   end
 
   # GET /clubs/1 or /clubs/1.json
@@ -59,6 +59,10 @@ class ClubsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def tennis_school
+      @tennis_school ||= TennisSchool.find(tennis_school_params[:tennis_school_id])
+    end
+
     def set_club
       @club = Club.find(params[:id])
     end

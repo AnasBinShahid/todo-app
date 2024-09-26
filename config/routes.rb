@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   scope '/tennis_schools/:tennis_school_id' do
     resources :clubs
   end
+  scope '/clubs/:uuid' do
+    resources :lesson_packages
+  end
 
   root to: 'notes#index'
 end
